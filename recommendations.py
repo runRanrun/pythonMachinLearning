@@ -25,3 +25,6 @@ def sim_distance(prefs,person1,person2):
        for item in prefs[person1] if item in prefs[person2]])
 
        return 1/(1+sqrt(sum_of_squares))
+
+
+print sim_distance(Prefer,'tommy','lily')
