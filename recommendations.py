@@ -10,7 +10,7 @@ Prefer = {"tommy":{'War':2.3,'The lord of wings':3.0,'Kongfu':5.0},
 
 print(Prefer["tommy"]["War"])
 
-# Euclidean Distace Score
+# Euclidean Distance Score
 
 from math import sqrt
 def sim_distance(prefs,person1,person2):
@@ -25,6 +25,15 @@ def sim_distance(prefs,person1,person2):
        for item in prefs[person1] if item in prefs[person2]])
 
        return 1/(1+sqrt(sum_of_squares))
+# Pearson Correlation Score
+def sim_pearson(prefs,p1,p2):
+    si={}
+    for item in prefs[p1]:
+        if item in prefs[p2]: si[item]=1
+    n=len(si)
+    if n==0:return 1
 
+    sum1=sum([prefs[p1][it] for it in si])
+    sum2=sum([prefs[p2][it] for it in si])
 
 print sim_distance(Prefer,'tommy','lily')
