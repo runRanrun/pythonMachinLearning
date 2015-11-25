@@ -36,4 +36,6 @@ def sim_pearson(prefs,p1,p2):
 
 
 
+
+
 print sim_distance(Prefer,'tommy','lily')
