@@ -35,4 +35,5 @@ def sim_pearson(prefs,p1,p2):
     sum2=sum([prefs[p2][it] for it in si])
 
 
+
 print sim_distance(Prefer,'tommy','lily')
