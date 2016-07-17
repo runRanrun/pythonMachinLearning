@@ -13,7 +13,7 @@ print(Prefer["tommy"]["War"])
 # Euclidean Distance Score
 
 from math import sqrt
-def sim_distance(prefs,person1,person2):
+def sim_distance(prefs,person1, person2):
        si={}
        for item in prefs[person1]:
               if item in prefs[person2]:
