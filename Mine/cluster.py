@@ -34,6 +34,8 @@ def pearson(v1,v2):
 
 
 #k-means
+def kmeans(pointcount,data):
+
 
 
 #main
