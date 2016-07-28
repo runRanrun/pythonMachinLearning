@@ -1,31 +1,7 @@
-import re
-from collections import defaultdict
 
-
-#apcount={}
-#wordcounts={}
-#feedlist=[line for line in file('feedlist.txt')]
-#for feedurl in feedlist:
-#  try:
-#    title,wc=getwordcounts(feedurl)
-#    wordcounts[title]=wc
-#    for word,count in wc.items():
-#      apcount.setdefault(word,0)
-#      if count>1:
-#        apcount[word]+=1
-#  except:
-#    print 'Failed to parse feed %s' % feedurl
-
-
-# aList = [123, 'xyz', 'zara', 'abc']
-# newli=[]
-# newli.append(aList)
-# newli[[123, 'xyz', 'zara', 'abc']]
-# bList = [1,2,2,3]
-# newli.append(bList)
-# newli[[123, 'xyz', 'zara', 'abc'], [1, 2, 2, 3]]
-
-
+UPPER = 100
+LOWER = 20
+#judge the existance of the element in array
 def isset(v,s):
    try :
      v[s]
@@ -35,10 +11,11 @@ def isset(v,s):
      return  True
 
 data = [line for line in file('StoneStory.txt')]
-#print wordlist[0]
 temprecord = {}
+totoalrecord={}
 wordrecord = []
 appearword = {}
+appearwordrecord = {}
 i = 0
 
 out=file('StoneStoryData.txt','w')
@@ -46,18 +23,48 @@ for wordlist in data:
     try:
         word = wordlist.split(' ')
         for single in word:
-            if isset(appearword,single)==False and len(single)>3:
-                appearword[single] = len(single)
-                out.write('\t%s' % single)
-            if isset(temprecord,single):
+            if isset(appearwordrecord,single)==False and len(single)>3:
+                appearwordrecord[single] = len(single)
+                appearword[i] = single
+                #print appearword[i]
+                i+=1
+                #out.write('%s\t' % single)
+            if isset(temprecord,single) and len(single)>3:
                 temprecord[single] += 1
             else:
                 temprecord[single] = 1
+            if isset(totoalrecord,single) and len(single)>3:
+                totoalrecord[single] += 1
+            else:
+                totoalrecord[single] = 1
         wordrecord.append(temprecord)
         temprecord = {}
     except:
         print 'fail to read file'
-wordrecord
+#for word1 in appearword:
+#    out.write('%s\t' % word1)
+#out.write('%d\n' %len(appearword))
+wordcount = 0
+#out.write(str(len(totoalrecord))+'\n')
+for i in range(0, len(appearword)):
+    if(totoalrecord[appearword[i]]>LOWER and totoalrecord[appearword[i]]<UPPER):
+        out.write('%s\t' % appearword[i])
+        wordcount+=1
+#out.write(str(wordcount)+'\n')
+wordcount = 0
+out.write('\n')
+for i in range(0,len(wordrecord)):
+    for k in range(0,len(appearword)):
+        if totoalrecord[appearword[k]]>LOWER and totoalrecord[appearword[k]]<UPPER:
+            wordcount+=1
+            if isset(wordrecord[i],appearword[k]) :
+                out.write('%s\t' %wordrecord[i][appearword[k]])
+
+            else:
+                out.write('0\t')
+
+    out.write('\n')
+#out.write(str(wordcount)+'\n')
 
 
 
