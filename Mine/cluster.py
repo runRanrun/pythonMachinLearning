@@ -1,6 +1,8 @@
 from math import sqrt
+
 from PIL import Image,ImageDraw
 import jieba
+
 import random
 #readfile
 def readfile(filename):
@@ -18,6 +20,7 @@ def readfile(filename):
 #pearson distance
 def pearson(v1,v2):
   # Simple sums
+
   sum1=sum(v1)
   sum2=sum(v2)
   #print "sum1:",sum1,"sum2:",sum2
@@ -25,8 +28,10 @@ def pearson(v1,v2):
   sum1Sq=sum([pow(v,2) for v in v1])
   sum2Sq=sum([pow(v,2) for v in v2])
 
-  # Sum of the products
+
+    # Sum of the products
   pSum=sum([v1[i]*v2[i] for i in range(len(v1))])
+
 
 
   # Calculate r (Pearson score)
@@ -107,6 +112,7 @@ def kmeans(pointcount,data):
             resultrecord = arrayrecord
         #print "first:",arrayrecord[0],"\n","second:",arrayrecord[1]
 
+
     print result[0],"\n",result[1]
     print resultrecord[0],"\n",resultrecord[1]
     print judge
@@ -114,7 +120,9 @@ def kmeans(pointcount,data):
 #main
 wordcount = readfile('StoneStoryData.txt')
 
+
 kmeans(2,wordcount)
+
 
 
 
