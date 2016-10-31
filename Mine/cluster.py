@@ -1,7 +1,7 @@
 from math import sqrt
 
-#from PIL import Image,ImageDraw
-#import jieba
+from PIL import Image,ImageDraw
+import jieba
 
 import random
 #readfile
