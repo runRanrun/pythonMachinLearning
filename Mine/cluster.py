@@ -1,9 +1,8 @@
 from math import sqrt
-<<<<<<< HEAD
-=======
-from PIL import Image,ImageDraw
-import jieba
->>>>>>> refs/remotes/origin/Mac
+
+#from PIL import Image,ImageDraw
+#import jieba
+
 import random
 #readfile
 def readfile(filename):
@@ -21,44 +20,19 @@ def readfile(filename):
 #pearson distance
 def pearson(v1,v2):
   # Simple sums
-<<<<<<< HEAD
-    sum1=sum(v1)
-    sum2=sum(v2)
 
-    # Sums of the squares
-    sum1Sq=sum([pow(v,2) for v in v1])
-    sum2Sq=sum([pow(v,2) for v in v2])
-=======
   sum1=sum(v1)
   sum2=sum(v2)
   #print "sum1:",sum1,"sum2:",sum2
   # Sums of the squares
   sum1Sq=sum([pow(v,2) for v in v1])
   sum2Sq=sum([pow(v,2) for v in v2])
->>>>>>> refs/remotes/origin/Mac
+
 
     # Sum of the products
-    pSum=sum([v1[i]*v2[i] for i in range(len(v1))])
-
-<<<<<<< HEAD
-    # Calculate r (Pearson score)
-    num=pSum-(sum1*sum2/len(v1))
-    den=sqrt((sum1Sq-pow(sum1,2)/len(v1))*(sum2Sq-pow(sum2,2)/len(v1)))
-    if den==0: return 0
-
-    return 1.0-num/den
+  pSum=sum([v1[i]*v2[i] for i in range(len(v1))])
 
 
-#k-means cluster
-def kcluster(k,data):
-
-    range=[(min(data1[i] for data1 in data),max(data1[i] for data1 in data)) for i in range(len(data[0]))]
-    #随机创造k个中心点
-    clusterpoints = [[random.random()*(range[i][1]-range[i][0])+range[i][0] for i in range(len(data[0]))]]
-    lastmatches=None
-    for t  in range(100):
-        print ''
-=======
 
   # Calculate r (Pearson score)
   num=pSum-(sum1*sum2/len(v1))
@@ -137,7 +111,7 @@ def kmeans(pointcount,data):
             judge = sum(kdistance[0])+sum(kdistance[1])
             resultrecord = arrayrecord
         #print "first:",arrayrecord[0],"\n","second:",arrayrecord[1]
->>>>>>> refs/remotes/origin/Mac
+
 
     print result[0],"\n",result[1]
     print resultrecord[0],"\n",resultrecord[1]
@@ -145,21 +119,10 @@ def kmeans(pointcount,data):
     return
 #main
 wordcount = readfile('StoneStoryData.txt')
-<<<<<<< HEAD
-min = 1
-recordi = 0
-recordj = 0
-for i in range(1,len(wordcount)):
-     if min>pearson(wordcount[0],wordcount[i]):
-        recordi=0
-        recordj=i
-        min = pearson(wordcount[0],wordcount[i])
-print recordi,recordj,min,len(wordcount)
-distancerecord=[]
-=======
+
 
 kmeans(2,wordcount)
 
 
 
->>>>>>> refs/remotes/origin/Mac
+
