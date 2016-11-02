@@ -30,7 +30,19 @@ def schedulecost(sol):
         totalprice+=outbound[2]
         totalprice+=returnf[2]
 
-        
+        if latestarrival<getminutes(outbound[1]):
+            latestarrival=getminutes(outbound[1])
+        if earliestdep>getminutes(returnf[0]):
+            earliestdep=getminutes(returnf[0])
+    totalwait=0
+    for d in range(len(sol)/2):
+        origin=people[d][1]
+        outbound=flights[(origin,destination)][int(sol[2*d])]
+        returnf=flights[(destination,origin)][int(sol[2*d+1])]
+        totalwait+=latestarrival-getminutes(outbound[1])
+        totalwait+=getminutes(returnf[0])-earliestdep
+        if latestarrival<earliestdep:totalwait+=50
+        return totalprice+totalwait
 
 
 
