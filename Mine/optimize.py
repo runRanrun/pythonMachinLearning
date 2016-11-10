@@ -13,10 +13,10 @@ flights={}
 for line in file('schedule.txt'):
     origin,dest,depart,arrive,price=line.strip().split(',')
     flights.setdefault((origin,dest),[])
-    flights[(origin,dest)].append(depart,arrive,int(price))
+    flights[(origin,dest)].append((depart,arrive,int(price)))
 
 
- #时间计算函数
+#
 def getminutes(t):
     x = time.strftime(t,'%H:%M')
     return x[3]*60+x[4]
@@ -34,10 +34,10 @@ def schedulecost(sol):
 
         totalprice += outbound[2]
         totalprice += returnf[2]
-        #飞行的时间成本为0.5美元一分钟
+        #the cost on board is 0.5 dollar per hour
         totalprice += 0.5*(getminutes(outbound[1])-getminutes(outbound[0]))
         totalprice += 0.5*(getminutes(returnf[1])-getminutes(returnf[0]))
-        #每个晚于八点到的人均罚款20美元
+        #everyone who is late will pay 20 dollars
         if getminutes(outbound[0]) < getminutes("8:00"):
             totalprice += 20
 
